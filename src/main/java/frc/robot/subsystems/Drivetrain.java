@@ -1,27 +1,28 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkLowLevel;
+import com.revrobotics.spark.SparkMax; //is this right? shouldnt it be com.revrobotics.CANSparkMax?
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 
-//change those thingies
-//hello
-import ; // ????????
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
 
 public class Drivetrain extends SubsystemBase { 
 // there are 4 motor thingies
-  private WPI_TalonSRX frontLeftMaster;
-  private WPI_TalonSRX frontRightMaster;
-  private WPI_TalonSRX bottomLeftSlave;
-  private WPI_TalonSRX bottomRightSlave; 
+  private SparkMax frontLeftMaster;
+  private SparkMax frontRightMaster;
+  private SparkMax bottomLeftSlave;
+  private SparkMax bottomRightSlave; 
   // phoenix tuner is awesome sauce
   private DifferentialDrive drive;
 
   public Drivetrain() {
     // Assigns IDs to the motor objects; // change accordingly
-    frontRightMaster = new WPI_TalonSRX(42);
-    bottomLeftSlave = new WPI_TalonSRX(1);
-    bottomRightSlave = new WPI_TalonSRX(3);
+    frontLeftMaster = new SparkMax(0, MotorType.kBrushless);
+    frontRightMaster = new SparkMax(42, MotorType.kBrushless);
+    bottomLeftSlave = new SparkMax(1, MotorType.kBrushless);
+    bottomRightSlave = new SparkMax(3, MotorType.kBrushless);
 
     // Makes one motor follow the operations of another.
     bottomLeftSlave.follow(frontLeftMaster);
