@@ -1,7 +1,8 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.spark.SparkLowLevel;
-import com.revrobotics.spark.SparkMax; //is this right? shouldnt it be com.revrobotics.CANSparkMax?
+import com.revrobotics.spark.SparkBase;
+import com.revrobotics.spark.SparkMax; 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -29,6 +30,7 @@ public class Drivetrain extends SubsystemBase {
     bottomRightSlave.follow(frontRightMaster);
 
     frontRightMaster.setInverted(true);
+    frontRightMaster.setInverted(SparkLowLevel.MotorType.kInvertedMotor);
 
     drive = new DifferentialDrive(frontLeftMaster, frontRightMaster);
   }
