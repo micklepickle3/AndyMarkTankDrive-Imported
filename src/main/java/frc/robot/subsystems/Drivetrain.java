@@ -5,6 +5,8 @@ import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkMax; 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
+//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX; 
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
@@ -17,6 +19,7 @@ public class Drivetrain extends SubsystemBase {
   private SparkMax bottomRightSlave; 
   // phoenix tuner is awesome sauce
   private DifferentialDrive drive;
+  //push 1
 
   public Drivetrain() {
     // Assigns IDs to the motor objects; // change accordingly
@@ -29,7 +32,7 @@ public class Drivetrain extends SubsystemBase {
     bottomLeftSlave.follow(frontLeftMaster);
     bottomRightSlave.follow(frontRightMaster);
 
-    frontRightMaster.setInverted(true);
+    frontRightMaster.setInverted(SparkLowLevel.MotorType.kInvertedMotor);
     frontRightMaster.setInverted(SparkLowLevel.MotorType.kInvertedMotor);
 
     drive = new DifferentialDrive(frontLeftMaster, frontRightMaster);
